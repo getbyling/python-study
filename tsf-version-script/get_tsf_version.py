@@ -78,7 +78,7 @@ def ssh_client_key(ip,port,username,key,command):
     """免密方式登录节点，输入ip,port,用户名，id_rsa路径，查询版本命令，返回版本信息"""
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    key=paramiko.RSAKey.from_private_key_file(key)
+    key = paramiko.RSAKey.from_private_key_file(key)
     try:
         ssh.connect(ip, port, username, pkey=key)
         stdin, stdout, stderr = ssh.exec_command(command)
